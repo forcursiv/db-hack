@@ -36,6 +36,10 @@ def create_commendation(schoolkid_name, lesson_title):
         group_letter=schoolkid.group_letter,
         subject__title=lesson_title
     ).last()
+
+    if not last_lesson:
+        raise Exception('Урок не найден! Возможно предмет указан неправильно.')
+    
     Commendation.objects.create(
         text=random.choice(COMMENDATIONS),
         schoolkid=schoolkid,
