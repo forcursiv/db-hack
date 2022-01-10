@@ -15,9 +15,9 @@ def get_schoolkid(schoolkid_name):
     try:
         schoolkid = Schoolkid.objects.get(full_name__contains=schoolkid_name)
     except ObjectDoesNotExist:
-        raise Exception('Ученик не найден!')
+        raise Exception('Ученик не найден! Попробуй с другим именем.')
     except MultipleObjectsReturned:
-        return Exception('Найдено несколько учеников!')
+        return Exception('Найдено несколько учеников! Укажи имя точнее.')
     return schoolkid
 
 def fix_marks(schoolkid_name):
